@@ -1,6 +1,7 @@
 
 #Primer ejercicio:
 
+from ctypes import c_int
 from datetime import *
 
 #Escribe el día de la semana actual (el de hoy)
@@ -66,3 +67,21 @@ def calcular_edad(a):
 
 edad = calcular_edad(fecha_nacimiento)
 print("Tienes ", edad, " años")
+
+#cuántos días, horas, minutos y segundos le faltan para el siguiente cumpleaños.
+ahora = datetime.now()
+if(int(fecha_nacimiento[5:7])==ahora.month):
+	if (int(fecha_nacimiento[8:])<ahora.day):
+		fecha_cumple= str(ahora.year) + "-" + str(fecha_nacimiento[5:7]) + "-" + str(fecha_nacimiento[8:])
+	else:
+		fecha_cumple= str(ahora.year+1) + "-" + str(fecha_nacimiento[5:7]) + "-" + str(fecha_nacimiento[8:])
+elif(int(fecha_nacimiento[5:7])<ahora.month):
+	fecha_cumple= str(ahora.year+1) + "-" + str(fecha_nacimiento[5:7]) + "-" + str(fecha_nacimiento[8:])
+else:
+	fecha_cumple= str(ahora.year) + "-" + str(fecha_nacimiento[5:7]) + "-" + str(fecha_nacimiento[8:])
+
+cumple = datetime.strptime(fecha_cumple, "%Y-%m-%d")
+
+cuanto_queda=cumple-ahora
+print(f"La diferencia es de {cuanto_queda.days} días y {cuanto_queda.seconds} segundos. La diferencia total es de {cuanto_queda.total_seconds()} segundos")
+
