@@ -45,7 +45,7 @@ class Diccionario:
 
 def main():
     hiztegia = Diccionario()
-    hiztegia.cargar('.\TextFile1.txt', 'eu')
+    hiztegia.cargar('.\diccionario_prueba.txt', 'eu')
     #Consulta
     hiztegia.consultar('Kaixo')
     hiztegia.consultar("afdsfg")
