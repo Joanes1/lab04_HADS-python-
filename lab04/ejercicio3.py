@@ -5,29 +5,55 @@ class Diccionario:
 
     def __str__(self):
         for palabra in self.dictionary:
-            print(palabra)
+            print(palabra, ":", self.dictionary[palabra])
         return ""
 
     def cargar(self, fichero, origen):
         g = open(fichero, "r")
 
         if(origen == "eu"):
-            while line.readline():
-                lerroa = line.readline()
-                clave = lerroa.split[0]
-                valor = lerroa.split[1]
+            for l in g:
+                lerroa = l.strip()
+                clave = l.rsplit()[0]
+                valor = l.rsplit()[1]
                 self.dictionary[clave] = valor
+                
         else: 
-            while line.readline():
-                lerroa = line.readline()
-                clave = lerroa.split[1]
-                valor = lerroa.split[0]
+            for l in g:
+                lerroa = l.strip()
+                clave = l.split()[1]
+                valor = l.split()[0]
                 self.dictionary[clave] = valor
 
         g.close()
 
-        def consultar(self, palabra):
-            if self.dictionary.has_key(palabra):
-                return self.dictionary.get(palabra)
-            else:
-                return " "
+    def consultar(self, palabra):
+        claves = self.dictionary.keys()
+        if palabra in claves:
+            print(self.dictionary.get(palabra))
+            return self.dictionary.get(palabra)
+        else:
+            print(" ")
+            return " "
+            
+        
+
+
+
+
+#Programa
+
+def main():
+    hiztegia = Diccionario()
+    hiztegia.cargar('.\TextFile1.txt', 'eu')
+    #Consulta
+    hiztegia.consultar('Kaixo')
+    hiztegia.consultar("afdsfg")
+    print(" ")
+    print(" ")
+    #El diccionario completo
+    print("El diccionario completo: ")
+    print(hiztegia)
+
+if __name__== "__main__":
+    main()
