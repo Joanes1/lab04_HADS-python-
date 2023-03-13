@@ -18,13 +18,14 @@ class Diccionario:
                 valor = l.rsplit()[1]
                 self.dictionary[clave] = valor
                 
-        else: 
+        elif(origen == "en"): 
             for l in g:
                 lerroa = l.strip()
                 clave = l.split()[1]
                 valor = l.split()[0]
                 self.dictionary[clave] = valor
-
+        else:
+            print("El diccionario tiene que ser eu/en o en/eu")
         g.close()
 
     def consultar(self, palabra):
@@ -47,11 +48,11 @@ def main():
     hiztegia = Diccionario()
     hiztegia.cargar('.\diccionario_prueba.txt', 'eu')
     #Consulta
-    hiztegia.consultar('Kaixo')
+    hiztegia.consultar('Car')
     hiztegia.consultar("afdsfg")
     print(" ")
     print(" ")
-    #El diccionario completo
+    #El diccionario completo, para ver que funciona __str__
     print("El diccionario completo: ")
     print(hiztegia)
 
