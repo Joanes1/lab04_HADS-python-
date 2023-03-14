@@ -3,6 +3,7 @@
 
 from ctypes import c_int
 from datetime import *
+from tkinter.tix import INTEGER
 
 #Escribe el día de la semana actual (el de hoy)
 
@@ -90,6 +91,11 @@ cuanto_queda=cumple-ahora
 #print(f"La diferencia es de {cuanto_queda.days} días y {cuanto_queda.seconds} segundos. La diferencia total es de {cuanto_queda.total_seconds()} segundos")
 print("Para el siguiente cumple quedan:")
 print(f"{cuanto_queda.days} dias")
-print(f"{cuanto_queda.hours} horas")
-print(f"{cuanto_queda.minutes} minutos")
-print(f"{cuanto_queda.seconds} segundos")
+min = int( cuanto_queda.seconds / 60)
+sec = int(cuanto_queda.seconds - (min*60))
+hour = int( min / 60)
+min = min - (hour*60)
+print(str(hour)+" horas")
+print(str(min)+" minutos")
+print(str(sec)+" segundos")
+
